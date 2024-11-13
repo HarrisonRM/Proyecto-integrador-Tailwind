@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control</title>
+    <!-- Link a Font Awesome para los iconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- CDN de Font Awesome -->
+    <!-- Link al CDN de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#bebab4] flex h-screen m-0">
+
+    <!-- Contenedor principal -->
+    <div class="flex flex-1 p-5">
+
+        <!-- Barra lateral más grande -->
+        <div class="w-64 bg-[#22232a] text-white h-full p-6 rounded-xl mr-8 shadow-lg">
+            <!-- Icono y texto del administrador -->
+            <div class="flex items-center justify-center mb-12">
+                <i class="fas fa-user-circle text-4xl mr-3"></i>
+                <span class="text-lg font-bold">Administrador</span>
+            </div>
+
+            <h2 class="text-center text-white mb-5 text-xl">Panel de Control</h2>
+
+            <!-- Botones de la barra lateral -->
+            <div class="space-y-4">
+                <button onclick="toggleSection('capturaHoras')"
+                    class="w-full text-left flex items-center px-4 py-3 bg-[#46413b] rounded-lg text-white hover:bg-[#020104]">
+                    <i class="fas fa-clock mr-3"></i> Captura Horas
+                </button>
+                <button onclick="toggleSection('reportes')"
+                    class="w-full text-left flex items-center px-4 py-3 bg-[#46413b] rounded-lg text-white hover:bg-[#020104]">
+                    <i class="fas fa-chart-line mr-3"></i> Reportes
+                </button>
+                <button onclick="toggleSection('alertas')"
+                    class="w-full text-left flex items-center px-4 py-3 bg-[#46413b] rounded-lg text-white hover:bg-[#020104]">
+                    <i class="fas fa-exclamation-triangle mr-3"></i> Alertas
+                </button>
+                <button onclick="toggleSection('historial')"
+                    class="w-full text-left flex items-center px-4 py-3 bg-[#46413b] rounded-lg text-white hover:bg-[#020104]">
+                    <i class="fas fa-history mr-3"></i> Historial
+                </button>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+
+            <!-- Botón de regreso -->
+            <a href="index.html">
+                <button
+                class="w-full text-left flex items-center px-4 py-3 bg-[#46413b] rounded-lg text-white hover:bg-[#020104] mt-auto">
+                <i class="fas fa-sign-out-alt mr-3"></i>
+                Regresar
+            </button>
+            </a>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="flex-grow p-6 bg-[#f7f7f6] rounded-xl shadow-lg overflow-y-auto">
+            <!-- Recuadro de Captura de Horas -->
+            <div id="capturaHoras" class="section-box hidden">
+                <h3 class="text-[#020104] text-2xl mb-5">Captura de Horas de Ingreso y Salida</h3>
+                <div class="flex gap-5">
+                    <div class="flex flex-col max-w-xs">
+                        <label for="horaIngreso" class="text-[#020104]">Hora de Ingreso:</label>
+                        <input type="datetime-local" id="horaIngreso"
+                            class="p-3 border border-[#46413b] rounded-lg bg-[#f7f7f6] text-[#020104]">
+                    </div>
+                    <div class="flex flex-col max-w-xs">
+                        <label for="horaSalida" class="text-[#020104]">Hora de Salida:</label>
+                        <input type="datetime-local" id="horaSalida"
+                            class="p-3 border border-[#46413b] rounded-lg bg-[#f7f7f6] text-[#020104]">
+                    </div>
+                </div>
+                <button class="w-full max-w-sm mt-5 p-3 bg-green-500 text-white rounded-lg hover:bg-green-600"
+                    onclick="registrarHoras()">Registrar Horas</button>
+                <div id="mensajeExitoso" class="hidden mt-4 p-3 bg-green-500 text-white rounded-lg font-bold">Captura de
+                    hora exitosa</div>
+            </div>
+
+            <!-- Recuadro de Generación de Reportes -->
+            <div id="reportes" class="section-box hidden">
+                <h3 class="text-[#020104] text-2xl mb-5">Generación de Reportes</h3>
+                <p>Aquí podrás generar reportes detallados basados en los registros.</p>
+            </div>
+
+            <!-- Recuadro de Alertas -->
+            <div id="alertas" class="section-box hidden">
+                <h3 class="text-[#020104] text-2xl mb-5">Alertas Importantes</h3>
+                <p>Aquí se mostrarán las alertas importantes.</p>
+            </div>
+
+            <!-- Recuadro de Historial de Registros -->
+            <div id="historial" class="section-box hidden">
+                <h3 class="text-[#020104] text-2xl mb-5">Historial de Registros</h3>
+                <table id="historialLista" class="w-full max-w-2xl table-auto mt-5 border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="border p-3 text-left bg-[#46413b] text-white">Fecha</th>
+                            <th class="border p-3 text-left bg-[#46413b] text-white">Hora de Ingreso</th>
+                            <th class="border p-3 text-left bg-[#46413b] text-white">Hora de Salida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Las filas se agregarán aquí mediante JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para manejar el registro de horas
+        let registros = []; // Array para almacenar los registros
+
+        function registrarHoras() {
+            const horaIngreso = document.getElementById('horaIngreso').value;
+            const horaSalida = document.getElementById('horaSalida').value;
+
+            if (horaIngreso && horaSalida) {
+                // Guardar el registro en el array
+                registros.push({ fecha: new Date().toLocaleDateString(), ingreso: horaIngreso, salida: horaSalida });
+
+                // Limpiar los inputs
+                document.getElementById('horaIngreso').value = '';
+                document.getElementById('horaSalida').value = '';
+
+                // Mostrar mensaje de éxito
+                const mensajeExitoso = document.getElementById('mensajeExitoso');
+                mensajeExitoso.style.display = 'block';
+                setTimeout(() => { mensajeExitoso.style.display = 'none'; }, 3000);
+
+                // Actualizar historial
+                actualizarHistorial();
+            } else {
+                alert('Por favor, ingresa ambas horas.');
+            }
+        }
+
+        function actualizarHistorial() {
+            const tbody = document.querySelector('#historialLista tbody');
+            tbody.innerHTML = ''; // Limpiar el contenido actual
+
+            // Agregar cada registro al historial
+            registros.forEach(registro => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="border p-3">${registro.fecha}</td>
+                    <td class="border p-3">${registro.ingreso}</td>
+                    <td class="border p-3">${registro.salida}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Función para alternar secciones
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const content = document.querySelector('.content');
+
+            // Verificar si la sección ya está activa
+            if (section.classList.contains('hidden')) {
+                section.classList.remove('hidden'); // Muestra la sección
+                content.appendChild(section); // Mueve la sección al final del contenido
+            } else {
+                section.classList.add('hidden'); // Oculta la sección
+            }
+
+            // Asegurarte de que el contenido se desplace hacia la parte inferior
+            content.scrollTop = content.scrollHeight; // Desplaza el scroll hacia abajo
+        }
+
+        // Ocultar secciones al cargar la página
+        window.onload = () => {
+            const sections = document.querySelectorAll('.section-box');
+            sections.forEach(section => {
+                section.classList.add('hidden'); // Inicialmente oculta todas las secciones
+            });
+        };
+    </script>
+
+</body>
+
+</html>

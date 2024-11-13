@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperación de Contraseña</title>
+    <!-- Agrega el CDN de Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-r from-[#bebab4] to-[#020104] flex justify-center items-center h-screen m-0 text-black">
+
+    <div
+        class="bg-[#f7f7f6] p-8 rounded-3xl shadow-xl max-w-[380px] text-center transition-transform duration-300 hover:scale-105">
+        <h2 class="font-bold text-black mb-5">Recuperación de Contraseña</h2>
+        <p class="text-black mb-5">Introduce tu correo electrónico y te enviaremos un enlace para restablecer tu
+            contraseña.</p>
+
+        <form id="resetForm">
+            <input type="email" id="email" placeholder="Correo electrónico" required
+                class="w-full p-3 mb-5 border border-[#bebab4] rounded-lg bg-[#f7f7f6] text-black text-base focus:outline-none focus:border-[#bebab4] focus:ring-2 focus:ring-[#bebab4] transition-all duration-300" />
+            <button type="button" onclick="sendPasswordReset()"
+                class="w-full p-3 mb-5 rounded-lg bg-[#bebab4] text-black font-bold transition-colors duration-300 hover:bg-[#22232a] hover:text-[#f7f7f6]">
+                Enviar enlace
+            </button>
+        </form>
+
+        <p class="text-black text-sm italic mt-3" id="message"></p>
+    </div>
+
+    <script>
+        function sendPasswordReset() {
+            const email = document.getElementById("email").value;
+            const messageElement = document.getElementById("message");
+
+            if (email) {
+                messageElement.textContent = "Si este correo está registrado, recibirás un enlace de recuperación.";
+                // Aquí podrías hacer una llamada AJAX o fetch al backend para procesar la recuperación
+            } else {
+                messageElement.textContent = "Por favor, introduce un correo electrónico válido.";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

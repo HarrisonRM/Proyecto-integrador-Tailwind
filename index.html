@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>innovapro - Página Moderna</title>
+    <!-- Incluir Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#f7f7f6] text-[#22232a] font-sans h-screen">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-[#020104]" id="navbar">
+        <div class="container mx-auto">
+            <a class="navbar-brand text-[#bebab4]" href="#">innovapro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-[#bebab4]" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link text-[#bebab4]" href="#services">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link text-[#bebab4]" href="#about">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link text-[#bebab4]" href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Hero -->
+    <header class="bg-[#22232a] py-24 text-center text-white" id="hero">
+        <div class="container mx-auto">
+            <h1 class="text-5xl font-bold mb-4">Bienvenido a Innovapro</h1>
+            <p class="text-xl mb-6">Tu solución moderna para necesidades digitales</p>
+            <a href="inicio de sesion.html" class="btn btn-primary btn-lg bg-[#020104] hover:bg-[#22232a] text-white py-2 px-6 rounded-full">Inicio de sesión</a>
+        </div>
+    </header>
+
+    <!-- Sección de Servicios -->
+    <section class="py-20 bg-[#bebab4]" id="services">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4 text-[#020104]">Nuestros Servicios</h2>
+            <p class="text-xl mb-12 text-[#22232a]">Ofrecemos soluciones innovadoras para ayudarte a crecer.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card bg-[#f7f7f6] rounded-lg shadow-lg">
+                    <img src="https://i.ibb.co/F50tjPn/desarrolo-web.jpg" alt="Desarrollo Web" class="w-full h-56 object-cover rounded-t-lg">
+                    <div class="card-body p-6">
+                        <h5 class="text-2xl font-semibold text-[#22232a]">Desarrollo Web</h5>
+                        <p class="text-[#bebab4]">Creamos sitios web modernos y funcionales que impresionan a tus usuarios.</p>
+                    </div>
+                </div>
+                <div class="card bg-[#f7f7f6] rounded-lg shadow-lg">
+                    <img src="https://i.ibb.co/hWfKwkm/asesoria.jpg" alt="Asesoría" class="w-full h-56 object-cover rounded-t-lg">
+                    <div class="card-body p-6">
+                        <h5 class="text-2xl font-semibold text-[#22232a]">SEO y Marketing</h5>
+                        <p class="text-[#bebab4]">Aumenta tu visibilidad online con nuestros servicios de SEO y marketing digital.</p>
+                    </div>
+                </div>
+                <div class="card bg-[#f7f7f6] rounded-lg shadow-lg">
+                    <img src="https://i.ibb.co/smrYYVL/marketin.jpg" alt="Marketing" class="w-full h-56 object-cover rounded-t-lg">
+                    <div class="card-body p-6">
+                        <h5 class="text-2xl font-semibold text-[#22232a]">Consultoría</h5>
+                        <p class="text-[#bebab4]">Te ayudamos a optimizar tus procesos y tomar decisiones estratégicas acertadas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Acerca de Nosotros -->
+    <section class="py-20 bg-[#bebab4]" id="about">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4 text-[#020104]">Sobre Nosotros</h2>
+            <p class="text-xl mb-6 text-[#22232a]">InnovaPro es una empresa que busca modernizar el control de asistencia de sus empleados mediante una aplicación web, permitiendo el registro de entrada y salida desde cualquier lugar.</p>
+            <a href="#contact" class="btn btn-primary btn-lg bg-[#020104] hover:bg-[#22232a] text-white py-2 px-6 rounded-full">Contáctanos</a>
+        </div>
+    </section>
+
+    <!-- Sección de Testimonios -->
+    <section class="py-20 bg-[#f7f7f6]" id="testimonials">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4 text-[#020104]">Testimonios</h2>
+            <p class="text-xl mb-12 text-[#22232a]">Nuestros clientes opinan sobre nuestros servicios.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#f7f7f6] p-6 rounded-lg shadow-lg">
+                    <p class="text-[#22232a] mb-4">"Con InnovaPro, el control de asistencia es instantáneo y preciso. Los reportes automáticos han simplificado mucho nuestra gestión de nómina."</p>
+                    <h5 class="text-[#bebab4]">- Óscar Murillo</h5>
+                </div>
+                <div class="bg-[#f7f7f6] p-6 rounded-lg shadow-lg">
+                    <p class="text-[#22232a] mb-4">"InnovaPro facilitó mi trabajo diario: todo el registro es digital y accesible desde cualquier dispositivo. Muy eficiente"</p>
+                    <h5 class="text-[#bebab4]">- Julieth Isaza</h5>
+                </div>
+                <div class="bg-[#f7f7f6] p-6 rounded-lg shadow-lg">
+                    <p class="text-[#22232a] mb-4">"La web es fácil de usar y ahora puedo registrar mi turno desde el celular sin problemas de registro"</p>
+                    <h5 class="text-[#bebab4]">- Miguel Fuentes</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="py-20 bg-[#bebab4]" id="contact">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4 text-[#020104]">Contacto</h2>
+            <p class="text-xl mb-6 text-[#22232a]">¿Tienes alguna pregunta o proyecto en mente? ¡Contáctanos!</p>
+            <form>
+                <div class="mb-4">
+                    <input type="email" class="form-control p-3 w-full rounded-lg bg-[#f7f7f6] border-[#22232a]" placeholder="Tu correo electrónico" required>
+                </div>
+                <div class="mb-6">
+                    <textarea class="form-control p-3 w-full rounded-lg bg-[#f7f7f6] border-[#22232a
